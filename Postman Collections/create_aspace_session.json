@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "4ab6565a-8e66-4912-a98d-a2491413b752",
+		"name": "create_aspace_session",
+		"description": "Use to set a session with the ArchivesSpace API before using any other collections.  Requires a global variable for your institution's ArchivesSpace API (aspace_base_url) as well as environment variables for user name (aspace_user) and password (aspace_password).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ASpace log in to session",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "440edcda-23b4-420c-9ce6-e4d524fdd9af",
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"pm.environment.set(\"aspace_session\", response.session);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "57a95954-8b30-4756-a68d-6a52322a9d04",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "99845cb5-450c-4710-9030-27ff7a2d72c9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{aspace_base_url}}/users/{{aspace_user}}/login?password={{aspace_password}}",
+					"host": [
+						"{{aspace_base_url}}"
+					],
+					"path": [
+						"users",
+						"{{aspace_user}}",
+						"login"
+					],
+					"query": [
+						{
+							"key": "password",
+							"value": "{{aspace_password}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "67defb97-d74c-4866-9a38-f1f64444e077",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "238ea41a-6074-48de-b8a0-c682d2c3eb8c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
