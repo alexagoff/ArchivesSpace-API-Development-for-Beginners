@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "63794be2-5619-4e12-a50e-18d76924bfad",
+		"name": "update_resource",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "search_resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c67a543-a5ff-4925-88bb-68c196922a8b",
+						"exec": [
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"pm.environment.set(\"resource_uri\", jsonObject.results[0].uri)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f7f83e48-cbfb-4bd2-bfa6-1cbc082476e0",
+						"exec": [
+							"//Grab the identifier and title data from the csv\r",
+							"\r",
+							"var i = pm.iterationData.get(\"identifier\")\r",
+							"var t = pm.iterationData.get(\"title\")\r",
+							"var e = pm.iterationData.get(\"ead_id\")\r",
+							"\r",
+							"//var i = \"CA 1884 Feb 24\"\r",
+							"//var t = \"Barret (H. L.) letter to Thomas R. Cornelius\"\r",
+							"//var e = \"ORU_CA1884Feb24.xml\"\r",
+							"\r",
+							"console.log (\"@@@\" + i + \" \" + t + \" \" + e)\r",
+							"\r",
+							"pm.variables.set(\"search_term\", i + \" \" + t + \" \" + e)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "ab659e59-2547-49c6-8b42-222fa92e1598",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"url": {
+					"raw": "{{aspace_base_url}}/repositories/2/search?q={{search_term}}&page=1&page_size=2&type[]=resource",
+					"host": [
+						"{{aspace_base_url}}"
+					],
+					"path": [
+						"repositories",
+						"2",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{search_term}}"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "2"
+						},
+						{
+							"key": "type[]",
+							"value": "resource"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resource_record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0ec4c3b-bf58-4ba7-8d00-27f885af5fdd",
+						"exec": [
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"pm.environment.set (\"resource_body\", JSON.stringify(jsonObject))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "a61b876e-cc90-4061-81c4-b8a4cc26d306",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"url": "{{aspace_base_url}}{{resource_uri}}"
+			},
+			"response": []
+		},
+		{
+			"name": "update_to_resource",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "163a8741-df54-489b-82da-777987bba4d8",
+						"exec": [
+							"var r_body = JSON.parse(pm.environment.get(\"resource_body\"));\r",
+							"\r",
+							"//change or add something based on an additional colum\r",
+							"\r",
+							"var n = pm.iterationData.get(\"new_thing\")\r",
+							"\r",
+							"var repo_note = r_body.repository_processing_note\r",
+							"console.log(\"@@\" + repo_note)\r",
+							"\r",
+							"var new_rep = repo_note + \" \" + n\r",
+							"console.log(\"@@\" + new_rep)\r",
+							"\r",
+							"r_body.repository_processing_note = new_rep\r",
+							"\r",
+							"pm.variables.set(\"resource_body\", JSON.stringify(r_body));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e98133ca-6357-4433-a0c2-a1fdec2d6506",
+						"exec": [
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"console.log (\"@@@@\" + jsonObject.title)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "6decf11d-83f4-4c50-9b81-d501f5be37a7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{resource_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{aspace_base_url}}{{resource_uri}}",
+					"host": [
+						"{{aspace_base_url}}{{resource_uri}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
