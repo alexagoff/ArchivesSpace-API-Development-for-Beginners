@@ -9,31 +9,19 @@
 			"name": "search_resources",
 			"event": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "5c67a543-a5ff-4925-88bb-68c196922a8b",
-						"exec": [
-							"var jsonObject = pm.response.json()\r",
-							"\r",
-							"pm.environment.set(\"resource_uri\", jsonObject.results[0].uri)"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f7f83e48-cbfb-4bd2-bfa6-1cbc082476e0",
+						"id": "7692aba2-3755-4ff0-b460-5030ef448e40",
 						"exec": [
 							"//Grab the identifier and title data from the csv\r",
 							"\r",
-							"var i = pm.iterationData.get(\"identifier\")\r",
-							"var t = pm.iterationData.get(\"title\")\r",
-							"var e = pm.iterationData.get(\"ead_id\")\r",
+							"// var i = pm.iterationData.get(\"identifier\")\r",
+							"// var t = pm.iterationData.get(\"title\")\r",
+							"// var e = pm.iterationData.get(\"ead_id\")\r",
 							"\r",
-							"//var i = \"CA 1884 Feb 24\"\r",
-							"//var t = \"Barret (H. L.) letter to Thomas R. Cornelius\"\r",
-							"//var e = \"ORU_CA1884Feb24.xml\"\r",
+							"var i = \"Coll 876\"\r",
+							"var t = \"Unidentified architectural drawings\"\r",
+							"var e = \"\"\r",
 							"\r",
 							"console.log (\"@@@\" + i + \" \" + t + \" \" + e)\r",
 							"\r",
@@ -41,9 +29,21 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cedc1e67-6cd3-4c0b-919f-ce0ef30cb749",
+						"exec": [
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"pm.environment.set(\"resource_uri\", jsonObject.results[0].uri)"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
-			"_postman_id": "ab659e59-2547-49c6-8b42-222fa92e1598",
+			"id": "ab659e59-2547-49c6-8b42-222fa92e1598",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -105,7 +105,7 @@
 					}
 				}
 			],
-			"_postman_id": "a61b876e-cc90-4061-81c4-b8a4cc26d306",
+			"id": "a61b876e-cc90-4061-81c4-b8a4cc26d306",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -163,7 +163,7 @@
 					}
 				}
 			],
-			"_postman_id": "6decf11d-83f4-4c50-9b81-d501f5be37a7",
+			"id": "6decf11d-83f4-4c50-9b81-d501f5be37a7",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
