@@ -106,8 +106,10 @@
 					"script": {
 						"id": "d0ec4c3b-bf58-4ba7-8d00-27f885af5fdd",
 						"exec": [
+							"//This gets the response from Postman that you see in the Response area after you hit send\r",
 							"var jsonObject = pm.response.json()\r",
 							"\r",
+							"//This saves the entire resource record so it can be updated in the next step\r",
 							"pm.environment.set (\"resource_body\", JSON.stringify(jsonObject))"
 						],
 						"type": "text/javascript"
