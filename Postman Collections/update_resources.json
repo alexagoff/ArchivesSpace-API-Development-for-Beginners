@@ -15,16 +15,22 @@
 						"exec": [
 							"//Grab the identifier and title data from the csv\r",
 							"\r",
+							"//When testing out your collection, input values into Testing search block.  When you are ready to run a spreadsheet, comment out the Testing variables (add \"//\" at the begining of the line) and uncomment the Spreadsheet search variable block (remove \"//\" at the begining of the line)\r",
+							"\r",
+							"//Spreadsheet search variable block: \r",
 							"// var i = pm.iterationData.get(\"identifier\")\r",
 							"// var t = pm.iterationData.get(\"title\")\r",
 							"// var e = pm.iterationData.get(\"ead_id\")\r",
 							"\r",
+							"//Testing search variable block:\r",
 							"var i = \"Coll 876\"\r",
 							"var t = \"Unidentified architectural drawings\"\r",
 							"var e = \"\"\r",
 							"\r",
+							"//A log to the console so you can see the search string passed:\r",
 							"console.log (\"@@@\" + i + \" \" + t + \" \" + e)\r",
 							"\r",
+							"//This sets the search term to be run:\r",
 							"pm.variables.set(\"search_term\", i + \" \" + t + \" \" + e)"
 						],
 						"type": "text/javascript"
@@ -35,8 +41,10 @@
 					"script": {
 						"id": "cedc1e67-6cd3-4c0b-919f-ce0ef30cb749",
 						"exec": [
+							"//This gets the response from Postman that you see in the Response area after you hit send\r",
 							"var jsonObject = pm.response.json()\r",
 							"\r",
+							"//This saves the uri in the response so it can be used in the next step\r",
 							"pm.environment.set(\"resource_uri\", jsonObject.results[0].uri)"
 						],
 						"type": "text/javascript"
