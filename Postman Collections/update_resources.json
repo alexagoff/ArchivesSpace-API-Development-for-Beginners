@@ -142,19 +142,28 @@
 					"script": {
 						"id": "163a8741-df54-489b-82da-777987bba4d8",
 						"exec": [
+							"//This retrieves the resource record saved in the previous step so it can be edited. \r",
 							"var r_body = JSON.parse(pm.environment.get(\"resource_body\"));\r",
 							"\r",
-							"//change or add something based on an additional colum\r",
+							"//This introduces a variable that will be appended to the resource repository processing note.  As with the search terms in the first step, when you are ready to run a spreadsheet, comment out the Testing variable (add \"//\" at the begining of the line) and uncomment the Spreadsheet search variable block (remove \"//\" at the begining of the line).\r",
+							"//Spreadsheet variable:\r",
+							"//var n = pm.iterationData.get(\"new_thing\")\r",
 							"\r",
-							"var n = pm.iterationData.get(\"new_thing\")\r",
+							"//Testing variable:\r",
+							"var n = \"test\"\r",
 							"\r",
+							"//This gets the repository processing note from the resource record and logs it to the console, just so you can see what it looked like before editing.\r",
 							"var repo_note = r_body.repository_processing_note\r",
+							"//This logs the current repository processing note to the console so that you can see what it looked like before editing\r",
 							"console.log(\"@@\" + repo_note)\r",
 							"\r",
+							"//This adds a space followed by the variable to be appended to the note.\r",
 							"var new_rep = repo_note + \" \" + n\r",
 							"console.log(\"@@\" + new_rep)\r",
 							"\r",
 							"r_body.repository_processing_note = new_rep\r",
+							"\r",
+							"console.log (r_body)\r",
 							"\r",
 							"pm.variables.set(\"resource_body\", JSON.stringify(r_body));"
 						],
@@ -179,7 +188,7 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"description": "Archives Space session ID",
