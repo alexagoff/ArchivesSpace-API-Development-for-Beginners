@@ -130,7 +130,8 @@
 						"value": "{{aspace_session}}"
 					}
 				],
-				"url": "{{aspace_base_url}}{{resource_uri}}"
+				"url": "{{aspace_base_url}}{{resource_uri}}",
+				"description": "This section of the collection uses the uri returned from the previous step to get the actual resource record (which is returned in JSON) from ArchivesSpace. It then saves a copy of that resource record so that it can be manipulated in the next step."
 			},
 			"response": []
 		},
