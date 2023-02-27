@@ -188,7 +188,7 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"//This logs the uri and status returned by ArchivesSpace.  If run as a GET, the status will be \"undefined\".  A successful POST should return a status of \"updated\"\r",
+							"//This logs the uri and status returned by ArchivesSpace.  If run as a GET, the status will be \"undefined\".  A successful POST should return a status of \"Updated\"\r",
 							"console.log (\"@@@@\" + jsonObject.uri + \" \" + jsonObject.status)"
 						],
 						"type": "text/javascript"
