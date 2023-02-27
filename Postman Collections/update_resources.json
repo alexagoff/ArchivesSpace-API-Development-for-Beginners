@@ -151,7 +151,7 @@
 							"//var n = pm.iterationData.get(\"new_thing\")\r",
 							"\r",
 							"//Testing variable:\r",
-							"var n = \"test\"\r",
+							"var n = \"\"\r",
 							"\r",
 							"//This gets the repository processing note from the resource record and logs it to the console, just so you can see what it looked like before editing.\r",
 							"var repo_note = r_body.repository_processing_note\r",
@@ -160,12 +160,16 @@
 							"\r",
 							"//This adds a space followed by the variable to be appended to the note.\r",
 							"var new_rep = repo_note + \" \" + n\r",
+							"//This logs the new note to the console so you can see what it will look like\r",
 							"console.log(\"@@\" + new_rep)\r",
 							"\r",
+							"//This changes the repository processing note into the new note\r",
 							"r_body.repository_processing_note = new_rep\r",
 							"\r",
-							"console.log (r_body)\r",
+							"//If you uncomment this line, it will log the entire resource record to the console.  Useful for debugging\r",
+							"//console.log (r_body)\r",
 							"\r",
+							"//This sets the new version of the resource record so it can be passed into ArchivesSpace\r",
 							"pm.variables.set(\"resource_body\", JSON.stringify(r_body));"
 						],
 						"type": "text/javascript"
@@ -176,9 +180,16 @@
 					"script": {
 						"id": "e98133ca-6357-4433-a0c2-a1fdec2d6506",
 						"exec": [
+							"//This gets the response from Postman that you see in the Response area after you hit send\r",
 							"var jsonObject = pm.response.json()\r",
 							"\r",
-							"console.log (\"@@@@\" + jsonObject.title)"
+							"//This tests whether the API returns a status code in the 200s, which means good (unlike 404 not found or things like that)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//This logs the uri and status returned by ArchivesSpace.  If run as a GET, the status will be \"undefined\".  A successful POST should return a status of \"updated\"\r",
+							"console.log (\"@@@@\" + jsonObject.uri + \" \" + jsonObject.status)"
 						],
 						"type": "text/javascript"
 					}
@@ -200,7 +211,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{resource_body}}",
+					"raw": "//This is the new version of the resource, set in the Pre-request script, that will be passed into ArchivesSpace\r\n{{resource_body}}",
 					"options": {
 						"raw": {
 							"language": "json"
