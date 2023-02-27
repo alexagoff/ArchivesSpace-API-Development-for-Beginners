@@ -95,7 +95,7 @@
 						}
 					]
 				},
-				"description": "This portion of the collection takes an input of identifying metadata from ArchivesSpace (identifier, title and ead id) and searches for the resource record to obtain a uri for the resource."
+				"description": "This portion of the collection takes an input of identifying metadata from ArchivesSpace (identifier, title and ead id) and searches for the resource record to obtain a uri for the resource. Note that by setting \"type\\[\\]=resource\" it will only search resources.\n\nEndFragment"
 			},
 			"response": []
 		},
