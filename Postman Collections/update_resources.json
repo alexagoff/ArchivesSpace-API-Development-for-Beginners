@@ -220,7 +220,8 @@
 							"disabled": true
 						}
 					]
-				}
+				},
+				"description": "This final step in the collection changes the resource in the pre-request script. Run as a GET (which is a good idea when initially testing) it will log the changes to the console so you can confirm that it does what you want. Run as a POST, it will update the resource record in your ArchivesSpace."
 			},
 			"response": []
 		}
