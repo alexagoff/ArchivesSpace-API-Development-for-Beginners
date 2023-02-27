@@ -166,7 +166,7 @@
 							"r_body.repository_processing_note = new_rep\r",
 							"\r",
 							"//If you uncomment this line, it will log the entire resource record to the console.  Useful for debugging\r",
-							"//console.log (r_body)\r",
+							"console.log (r_body)\r",
 							"\r",
 							"//This sets the new version of the resource record so it can be passed into ArchivesSpace\r",
 							"pm.variables.set(\"resource_body\", JSON.stringify(r_body));"
