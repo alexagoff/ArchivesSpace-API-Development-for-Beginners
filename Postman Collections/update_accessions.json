@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "226be18f-2d78-40ef-af6a-a756dd939c4f",
+		"name": "update_accession",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "search_accessions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c67a543-a5ff-4925-88bb-68c196922a8b",
+						"exec": [
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"pm.environment.set(\"accession_uri\", jsonObject.results[0].uri)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f7f83e48-cbfb-4bd2-bfa6-1cbc082476e0",
+						"exec": [
+							"//Spreadsheet search variable block: \r",
+							"// var i = pm.iterationData.get(\"identifier\")\r",
+							"// var t = pm.iterationData.get(\"title\")\r",
+							"\r",
+							"//Testing search variable block:\r",
+							"var i = \"88-62-M-Up 496\"\r",
+							"var t = \"Ellis Fuller Lawrence papers\"\r",
+							"\r",
+							"//A log to the console so you can see the search string passed:\r",
+							"console.log (\"@@@\" + i + \" \" + t)\r",
+							"\r",
+							"////This sets the search term to be run:\r",
+							"pm.variables.set(\"search_term\", i + \" \" + t)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "8042a5ec-3de4-46f4-88e0-7aec2c9756d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"url": {
+					"raw": "{{aspace_base_url}}/repositories/2/search?q={{search_term}}&page=1&page_size=2&type[]=accession",
+					"host": [
+						"{{aspace_base_url}}"
+					],
+					"path": [
+						"repositories",
+						"2",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{search_term}}"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "2"
+						},
+						{
+							"key": "type[]",
+							"value": "accession"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accession_record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8405b430-1255-409d-9897-a308f730808c",
+						"exec": [
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"//This saves the entire accession record so it can be updated in the next step\r",
+							"pm.environment.set (\"accession_body\", JSON.stringify(jsonObject))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "09630899-a7b6-45e5-8f07-6d4830061c3c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"url": "{{aspace_base_url}}{{accession_uri}}"
+			},
+			"response": []
+		},
+		{
+			"name": "update_to_accession",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "163a8741-df54-489b-82da-777987bba4d8",
+						"exec": [
+							"var a_body = JSON.parse(pm.environment.get(\"accession_body\"));\r",
+							"\r",
+							"//Spreadsheet variable:\r",
+							"//var n = pm.iterationData.get(\"new_thing\")\r",
+							"\r",
+							"//Testing variable:\r",
+							"var n = \"test\"\r",
+							"\r",
+							"var conDescr = a_body.content_description\r",
+							"console.log(\"@@\" + conDescr)\r",
+							"\r",
+							"var new_con = conDescr + \" \" + n\r",
+							"console.log(\"@@\" + new_con)\r",
+							"\r",
+							"a_body.content_description = new_con\r",
+							"\r",
+							"//If you uncomment this line, it will log the entire accession record to the console.  Useful for debugging\r",
+							"//console.log (a_body)\r",
+							"\r",
+							"pm.variables.set(\"accession_body\", JSON.stringify(a_body));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e98133ca-6357-4433-a0c2-a1fdec2d6506",
+						"exec": [
+							"//This gets the response from Postman that you see in the Response area after you hit send\r",
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"//This tests whether the API returns a status code in the 200s, which means good (unlike 404 not found or things like that)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//This logs the uri and status returned by ArchivesSpace.  If run as a GET, the status will be \"undefined\".  A successful POST should return a status of \"Updated\"\r",
+							"console.log (\"@@@@\" + jsonObject.uri + \" \" + jsonObject.status)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "3d20173a-91a0-4d9c-a2f6-bf3b4ad51624",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{accession_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{aspace_base_url}}{{accession_uri}}",
+					"host": [
+						"{{aspace_base_url}}{{accession_uri}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
