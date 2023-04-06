@@ -150,17 +150,17 @@
 							"//var n = pm.iterationData.get(\"new_thing\")\r",
 							"\r",
 							"//Testing variable:\r",
-							"var n = \"\"\r",
+							"var n = \"SOMETHING ELSE\"\r",
 							"\r",
 							"//This gets the repository processing note from the resource record and logs it to the console, just so you can see what it looked like before editing.\r",
 							"var repo_note = r_body.repository_processing_note\r",
 							"//This logs the current repository processing note to the console so that you can see what it looked like before editing\r",
-							"console.log(\"@@\" + repo_note)\r",
+							"console.log(\"@@EXISTING NOTE TEXT: \" + repo_note)\r",
 							"\r",
 							"//This adds a space followed by the variable to be appended to the note.\r",
 							"var new_rep = repo_note + \" \" + n\r",
 							"//This logs the new note to the console so you can see what it will look like\r",
-							"console.log(\"@@\" + new_rep)\r",
+							"console.log(\"@@UPDATED NOTE TEXT: \" + new_rep)\r",
 							"\r",
 							"//This changes the repository processing note into the new note\r",
 							"r_body.repository_processing_note = new_rep\r",
@@ -199,7 +199,7 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"description": "Archives Space session ID",
