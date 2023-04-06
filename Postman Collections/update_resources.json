@@ -186,12 +186,12 @@
 							"var jsonObject = pm.response.json()\r",
 							"\r",
 							"//This tests whether the API returns a status code in the 200s, which means good (unlike 404 not found or things like that)\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
 							"\r",
 							"//This logs the uri and status returned by ArchivesSpace.  If run as a GET, the status will be \"undefined\".  A successful POST should return a status of \"Updated\"\r",
-							"console.log (\"@@@@\" + jsonObject.uri + \" \" + jsonObject.status)"
+							"    console.log (\"@@@@\" + jsonObject.uri + \" \" + jsonObject.status)"
 						],
 						"type": "text/javascript"
 					}
