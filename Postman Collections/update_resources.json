@@ -27,10 +27,10 @@
 							"    //var e = \"ORU_UA143.xml\"\r",
 							"\r",
 							"//A log to the console so you can see the search string passed:\r",
-							"console.log (\"@@@\" + i + \" \" + t + \" \" + e)\r",
+							"    console.log (\"@@@\" + i + \" \" + t + \" \" + e)\r",
 							"\r",
 							"//This sets the search term to be run:\r",
-							"pm.variables.set(\"search_term\", i + \" \" + t + \" \" + e)"
+							"    pm.variables.set(\"search_term\", i + \" \" + t + \" \" + e)"
 						],
 						"type": "text/javascript"
 					}
