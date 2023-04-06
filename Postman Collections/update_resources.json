@@ -169,7 +169,7 @@
 							"    r_body.repository_processing_note = new_rep\r",
 							"\r",
 							"//If you uncomment this line, it will log the entire resource record to the console.  Useful for debugging\r",
-							"//console.log (r_body)\r",
+							"    //console.log (r_body)\r",
 							"\r",
 							"//This sets the new version of the resource record so it can be passed into ArchivesSpace\r",
 							"pm.variables.set(\"resource_body\", JSON.stringify(r_body));"
@@ -183,7 +183,7 @@
 						"id": "e98133ca-6357-4433-a0c2-a1fdec2d6506",
 						"exec": [
 							"//This gets the response from Postman that you see in the Response area after you hit send\r",
-							"var jsonObject = pm.response.json()\r",
+							"    var jsonObject = pm.response.json()\r",
 							"\r",
 							"//This tests whether the API returns a status code in the 200s, which means good (unlike 404 not found or things like that)\r",
 							"    pm.test(\"Status code is 200\", function () {\r",
@@ -202,7 +202,7 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"description": "Archives Space session ID",
