@@ -59,6 +59,93 @@
 				"url": "{{aspace_base_url}}{{subject_uri}}"
 			},
 			"response": []
+		},
+		{
+			"name": "unpublish_subject",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "50a082a8-c099-4f5f-993a-fb4262ddfc97",
+						"exec": [
+							"var ag_body = JSON.parse(pm.environment.get(\"agent_body\"));\r",
+							"\r",
+							"//Spreadsheet variable:\r",
+							"//var n = pm.iterationData.get(\"new_thing\")\r",
+							"\r",
+							"//Testing variable:\r",
+							"var n = \"lcnaf\"\r",
+							"\r",
+							"//Because there can be multiple names attached, we have to identify the position of the name we want to change.  names[0] is the first name in the list of names.\r",
+							"ag_body.names[0].source = n\r",
+							"\r",
+							"//If you uncomment this line, it will log the entire accession record to the console.  Useful for debugging\r",
+							"console.log (ag_body)\r",
+							"\r",
+							"pm.variables.set(\"agent_body\", JSON.stringify(ag_body));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "66e024f4-cd4e-4fff-85dc-72d0701d7e5b",
+						"exec": [
+							"//This gets the response from Postman that you see in the Response area after you hit send\r",
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"//This tests whether the API returns a status code in the 200s, which means good (unlike 404 not found or things like that)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//This logs the uri and status returned by ArchivesSpace.  If run as a GET, the status will be \"undefined\".  A successful POST should return a status of \"Updated\"\r",
+							"console.log (\"@@@@\" + jsonObject.uri + \" \" + jsonObject.status)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "4b845222-d4bd-4c58-a199-d89140ba9c24",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{accession_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{aspace_base_url}}{{agent_uri}}",
+					"host": [
+						"{{aspace_base_url}}{{agent_uri}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
