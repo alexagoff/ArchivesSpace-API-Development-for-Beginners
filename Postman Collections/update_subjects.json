@@ -20,6 +20,21 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0498bce0-6085-4bc6-a4ec-f52238fa7c4d",
+						"exec": [
+							"\r",
+							"var sUri = \"/subjects/2310\"\r",
+							"\r",
+							"\r",
+							"////This sets the search term to be run:\r",
+							"pm.variables.set(\"subject_uri\", sUri)"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"id": "d7f2904f-7348-49e5-a853-480f05aa06eb",
@@ -36,7 +51,7 @@
 						"value": "{{aspace_session}}"
 					}
 				],
-				"url": "{{aspace_base_url}}{{agent_uri}}"
+				"url": "{{aspace_base_url}}{{subject_uri}}"
 			},
 			"response": []
 		}
