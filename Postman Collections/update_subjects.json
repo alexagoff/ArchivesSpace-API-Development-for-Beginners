@@ -61,7 +61,7 @@
 			"response": []
 		},
 		{
-			"name": "unpublish_subject",
+			"name": "update_subject",
 			"event": [
 				{
 					"listen": "prerequest",
