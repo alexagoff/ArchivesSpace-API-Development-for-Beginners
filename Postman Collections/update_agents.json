@@ -45,7 +45,7 @@
 					}
 				}
 			],
-			"_postman_id": "f97aee4e-eba7-4fcc-b5d0-093fb114fa1f",
+			"id": "f97aee4e-eba7-4fcc-b5d0-093fb114fa1f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -108,7 +108,7 @@
 					}
 				}
 			],
-			"_postman_id": "d6337254-437b-45cb-ad30-a8b2f9100d95",
+			"id": "d6337254-437b-45cb-ad30-a8b2f9100d95",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -173,7 +173,7 @@
 					}
 				}
 			],
-			"_postman_id": "3031dd38-9a02-4717-a427-003d5429734e",
+			"id": "3031dd38-9a02-4717-a427-003d5429734e",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -189,7 +189,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{accession_body}}",
+					"raw": "{{agent_body}}",
 					"options": {
 						"raw": {
 							"language": "json"
