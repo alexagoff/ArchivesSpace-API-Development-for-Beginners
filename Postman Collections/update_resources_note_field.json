@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "4451584f-0da5-42dd-955d-5a87867607f3",
+		"name": "update_resource_note_field",
+		"description": "A demonstration collection which appends something to a repository processing note in an ArchivesSpace resource.\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "search_resources",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7692aba2-3755-4ff0-b460-5030ef448e40",
+						"exec": [
+							"//When testing out your collection, input values into Testing search block.  When you are ready to run a spreadsheet downloaded from ArchivesSpace, comment out the Testing variables (add \"//\" at the begining of the line) and uncomment the Spreadsheet search variable block (remove \"//\" at the begining of the line)\r",
+							"\r",
+							"    //Spreadsheet search variable block: \r",
+							"    var i = pm.iterationData.get(\"identifier\")\r",
+							"    var t = pm.iterationData.get(\"title\")\r",
+							"    var e = pm.iterationData.get(\"ead_id\")\r",
+							"\r",
+							"    //Testing search variable block:\r",
+							"    //var i = \"UA 143\"\r",
+							"    //var t = \"Academic Distinctions Committee records\"\r",
+							"    //var e = \"ORU_UA143.xml\"\r",
+							"\r",
+							"//A log to the console so you can see the search string passed:\r",
+							"    console.log (\"@@@\" + i + \" \" + t + \" \" + e)\r",
+							"\r",
+							"//This sets the search term to be run:\r",
+							"    pm.variables.set(\"search_term\", i + \" \" + t + \" \" + e)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cedc1e67-6cd3-4c0b-919f-ce0ef30cb749",
+						"exec": [
+							"//This gets the response from Postman that you see in the Response area after you hit send\r",
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"//This saves the uri in the response so it can be used in the next step\r",
+							"pm.environment.set(\"resource_uri\", jsonObject.results[0].uri)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "a48d88d0-65ec-4260-a44b-48683c7e926c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"url": {
+					"raw": "{{aspace_base_url}}/repositories/2/search?q={{search_term}}&page=1&page_size=2&type[]=resource",
+					"host": [
+						"{{aspace_base_url}}"
+					],
+					"path": [
+						"repositories",
+						"2",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{search_term}}"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "2"
+						},
+						{
+							"key": "type[]",
+							"value": "resource"
+						}
+					]
+				},
+				"description": "This portion of the collection takes an input of identifying metadata from ArchivesSpace (identifier, title and ead id) and searches for the resource record to obtain a uri for the resource. Note that by setting \"type\\[\\]=resource\" it will only search resources.\n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "resource_record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0ec4c3b-bf58-4ba7-8d00-27f885af5fdd",
+						"exec": [
+							"//This gets the response from Postman that you see in the Response area after you hit send\r",
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"//This saves the entire resource record so it can be updated in the next step\r",
+							"pm.environment.set (\"resource_body\", JSON.stringify(jsonObject))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "33f18242-0cdc-4cf0-928d-0ac1a1b96091",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"url": "{{aspace_base_url}}{{resource_uri}}",
+				"description": "This section of the collection uses the uri returned from the previous step to get the actual resource record (which is returned in JSON) from ArchivesSpace. It then saves a copy of that resource record so that it can be manipulated in the next step."
+			},
+			"response": []
+		},
+		{
+			"name": "update_to_resource",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "163a8741-df54-489b-82da-777987bba4d8",
+						"exec": [
+							"//This retrieves the resource record saved in the previous step so it can be edited. \r",
+							"    var r_body = JSON.parse(pm.environment.get(\"resource_body\"));\r",
+							"\r",
+							"//This section introduces a new string that will replace all existing conditions governing access notes.  \r",
+							"\r",
+							"    //Spreadsheet variable:\r",
+							"    //var n = pm.iterationData.get(\"new_thing\")\r",
+							"\r",
+							"    //Testing variable:\r",
+							"    var n = \"SOMETHING ELSE\"\r",
+							"\r",
+							"//This gets the notes from the resource record so they can be checked for existing    \r",
+							"var notes = r_body.notes\r",
+							"\r",
+							"//This part creates a loop that looks through all the notes in the resource record\r",
+							"for(var i = 0; i < notes.length; i++) {\r",
+							"    //This part looks specifically for Access Restriction Notes by their type\r",
+							"    if(notes[i].type == 'accessrestrict') {\r",
+							"        //This part looks in the text of the note for the target words, and replaces them with the new note if those words appear.\r",
+							"        var target = \"Reproductions and Permissions Request Form\"\r",
+							"        if (notes[i].subnotes[0].content.includes(target)) {\r",
+							"            notes[i].subnotes[0].content = n\r",
+							"        } \r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"//If you uncomment this line, it will log the entire resource record to the console.  Useful for debugging\r",
+							"    console.log (r_body)\r",
+							"\r",
+							"//This sets the new version of the resource record so it can be passed into ArchivesSpace\r",
+							"pm.variables.set(\"resource_body\", JSON.stringify(r_body));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e98133ca-6357-4433-a0c2-a1fdec2d6506",
+						"exec": [
+							"//This gets the response from Postman that you see in the Response area after you hit send\r",
+							"    var jsonObject = pm.response.json()\r",
+							"\r",
+							"//This tests whether the API returns a status code in the 200s, which means good (unlike 404 not found or things like that)\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"\r",
+							"//This logs the uri and status returned by ArchivesSpace.  If run as a GET, the status will be \"undefined\".  A successful POST should return a status of \"Updated\"\r",
+							"    console.log (\"@@@@\" + jsonObject.uri + \" \" + jsonObject.status)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "80e89ad7-1195-4541-ac5b-ed855d5c9595",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "//This is the new version of the resource, set in the Pre-request script, that will be passed into ArchivesSpace\r\n{{resource_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{aspace_base_url}}{{resource_uri}}",
+					"host": [
+						"{{aspace_base_url}}{{resource_uri}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": "This final step in the collection changes the resource in the pre-request script. Run as a GET (which is a good idea when initially testing) it will log the changes to the console so you can confirm that it does what you want. Run as a POST, it will update the resource record in your ArchivesSpace."
+			},
+			"response": []
+		}
+	]
+}
