@@ -135,7 +135,7 @@
 			"response": []
 		},
 		{
-			"name": "update_to_resource",
+			"name": "update_to_resource_note",
 			"event": [
 				{
 					"listen": "prerequest",
