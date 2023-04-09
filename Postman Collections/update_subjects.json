@@ -30,7 +30,7 @@
 							"//var sUri = pm.iterationData.get(\"URI\")\r",
 							"\r",
 							"//Testing uri block:\r",
-							"var sUri = \"/subjects/2310\"\r",
+							"var sUri = \"/subjects/15721\"\r",
 							"\r",
 							"//A log to the console so you can see the uri that was passed:\r",
 							"console.log (\"@@@\" + sUri)\r",
