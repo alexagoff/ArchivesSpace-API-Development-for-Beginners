@@ -15,8 +15,8 @@
 						"exec": [
 							"var jsonObject = pm.response.json()\r",
 							"\r",
-							"//This saves the entire agent record so it can be updated in the next step\r",
-							"pm.environment.set (\"agent_body\", JSON.stringify(jsonObject))"
+							"//This saves the entire subject record so it can be updated in the next step\r",
+							"pm.environment.set (\"subject_body\", JSON.stringify(jsonObject))"
 						],
 						"type": "text/javascript"
 					}
@@ -26,11 +26,16 @@
 					"script": {
 						"id": "0498bce0-6085-4bc6-a4ec-f52238fa7c4d",
 						"exec": [
+							"//Spreadsheet search variable block: \r",
+							"//var sUri = pm.iterationData.get(\"URI\")\r",
 							"\r",
+							"//Testing uri block:\r",
 							"var sUri = \"/subjects/2310\"\r",
 							"\r",
+							"//A log to the console so you can see the uri that was passed:\r",
+							"console.log (\"@@@\" + sUri)\r",
 							"\r",
-							"////This sets the search term to be run:\r",
+							"//This sets the uri to be run:\r",
 							"pm.variables.set(\"subject_uri\", sUri)"
 						],
 						"type": "text/javascript"
