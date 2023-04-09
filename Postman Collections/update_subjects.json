@@ -4,5 +4,41 @@
 		"name": "update_subject",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
-	"item": []
+	"item": [
+		{
+			"name": "subject_record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aa7e69fb-dc30-4938-8af4-795a086cf4b6",
+						"exec": [
+							"var jsonObject = pm.response.json()\r",
+							"\r",
+							"//This saves the entire agent record so it can be updated in the next step\r",
+							"pm.environment.set (\"agent_body\", JSON.stringify(jsonObject))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d7f2904f-7348-49e5-a853-480f05aa06eb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "Archives Space session ID",
+						"key": "X-ArchivesSpace-Session",
+						"type": "text",
+						"value": "{{aspace_session}}"
+					}
+				],
+				"url": "{{aspace_base_url}}{{agent_uri}}"
+			},
+			"response": []
+		}
+	]
 }
