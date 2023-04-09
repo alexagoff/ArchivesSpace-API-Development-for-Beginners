@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "4451584f-0da5-42dd-955d-5a87867607f3",
 		"name": "update_resource_note_field",
-		"description": "A demonstration collection which appends something to a repository processing note in an ArchivesSpace resource.\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.",
+		"description": "A demonstration collection which updates the access restriction note in a resource record if it contains a specific string.\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -50,7 +50,7 @@
 					}
 				}
 			],
-			"_postman_id": "a48d88d0-65ec-4260-a44b-48683c7e926c",
+			"id": "a48d88d0-65ec-4260-a44b-48683c7e926c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -115,7 +115,7 @@
 					}
 				}
 			],
-			"_postman_id": "33f18242-0cdc-4cf0-928d-0ac1a1b96091",
+			"id": "33f18242-0cdc-4cf0-928d-0ac1a1b96091",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -197,7 +197,7 @@
 					}
 				}
 			],
-			"_postman_id": "80e89ad7-1195-4541-ac5b-ed855d5c9595",
+			"id": "80e89ad7-1195-4541-ac5b-ed855d5c9595",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
