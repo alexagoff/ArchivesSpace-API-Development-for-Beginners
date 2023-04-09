@@ -76,7 +76,7 @@
 							"//If you uncomment this line, it will log the entire accession record to the console.  Useful for debugging\r",
 							"console.log (su_body)\r",
 							"\r",
-							"pm.variables.set(\"agent_body\", JSON.stringify(ag_body));"
+							"pm.variables.set(\"subject_body\", JSON.stringify(su_body));"
 						],
 						"type": "text/javascript"
 					}
@@ -117,7 +117,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{accession_body}}",
+					"raw": "{{subject_body}}",
 					"options": {
 						"raw": {
 							"language": "json"
