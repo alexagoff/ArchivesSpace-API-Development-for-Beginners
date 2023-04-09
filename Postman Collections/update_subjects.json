@@ -106,7 +106,7 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"description": "Archives Space session ID",
