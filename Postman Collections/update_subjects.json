@@ -68,19 +68,13 @@
 					"script": {
 						"id": "50a082a8-c099-4f5f-993a-fb4262ddfc97",
 						"exec": [
-							"var ag_body = JSON.parse(pm.environment.get(\"agent_body\"));\r",
+							"var su_body = JSON.parse(pm.environment.get(\"subject_body\"));\r",
 							"\r",
-							"//Spreadsheet variable:\r",
-							"//var n = pm.iterationData.get(\"new_thing\")\r",
-							"\r",
-							"//Testing variable:\r",
-							"var n = \"lcnaf\"\r",
-							"\r",
-							"//Because there can be multiple names attached, we have to identify the position of the name we want to change.  names[0] is the first name in the list of names.\r",
-							"ag_body.names[0].source = n\r",
+							"//Set the publish status to false so the subject is not published.\r",
+							"su_body.publish = false\r",
 							"\r",
 							"//If you uncomment this line, it will log the entire accession record to the console.  Useful for debugging\r",
-							"console.log (ag_body)\r",
+							"console.log (su_body)\r",
 							"\r",
 							"pm.variables.set(\"agent_body\", JSON.stringify(ag_body));"
 						],
@@ -131,9 +125,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{aspace_base_url}}{{agent_uri}}",
+					"raw": "{{aspace_base_url}}{{subject_uri}}",
 					"host": [
-						"{{aspace_base_url}}{{agent_uri}}"
+						"{{aspace_base_url}}{{subject_uri}}"
 					],
 					"query": [
 						{
