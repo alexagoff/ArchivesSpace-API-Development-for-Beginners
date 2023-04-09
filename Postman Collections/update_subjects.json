@@ -30,13 +30,13 @@
 							"//var sUri = pm.iterationData.get(\"URI\")\r",
 							"\r",
 							"//Testing uri block:\r",
-							"var sUri = \"/subjects/15721\"\r",
+							"var sUri = \"/subjects/1699\"\r",
 							"\r",
 							"//A log to the console so you can see the uri that was passed:\r",
 							"console.log (\"@@@\" + sUri)\r",
 							"\r",
 							"//This sets the uri to be run:\r",
-							"pm.variables.set(\"subject_uri\", sUri)"
+							"pm.environment.set(\"subject_uri\", sUri)"
 						],
 						"type": "text/javascript"
 					}
