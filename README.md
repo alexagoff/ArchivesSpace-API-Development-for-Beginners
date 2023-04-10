@@ -11,17 +11,15 @@ You'll find a small set of utility JSON scripts to be used with [Postman](https:
 ## Preparing for the workshop
 
 ## List of scripts 
-<details>
-<summary>Click to view descriptive summaries of scripts in [Postman Collections](Postman%20Collections)</summary>
+Descriptive summaries of scripts in this repository.
 <ul>
-<li>create_aspace_session.json</li>
+<li>[create_aspace_session.json]([./Postman%20Collections/create_aspace_session.json](https://github.com/alexagoff/ArchivesSpace-API-Development-for-Beginners/blob/main/Postman%20Collections/create_aspace_session.json))</li>
 <li>update_accessions.json</li>
 <li>update_accessions.json</li>
 <li>update_accessions.json</li>
 <li>update_accessions.json</li>
-<li>update_accessions.json</li>
+<li>[update_accessions.json](https://github.com/alexagoff/ArchivesSpace-API-Development-for-Beginners/blob/main/Postman%20Collections/create_aspace_session.json)</li>
 </ul>
-</details>
 
 ## Handouts 
 
