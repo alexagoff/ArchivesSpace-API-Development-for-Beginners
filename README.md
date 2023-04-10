@@ -11,6 +11,17 @@ You'll find a small set of utility JSON scripts to be used with [Postman](https:
 ## Preparing for the workshop
 
 ## List of scripts 
+<details>
+<summary>Click to view descriptive summaries of scripts in [Postman Collections](Postman%20Collections)</summary>
+<ul>
+<li>create_aspace_session.json</li>
+<li>update_accessions.json</li>
+<li>update_accessions.json</li>
+<li>update_accessions.json</li>
+<li>update_accessions.json</li>
+<li>update_accessions.json</li>
+</ul>
+</details>
 
 ## Handouts 
 
