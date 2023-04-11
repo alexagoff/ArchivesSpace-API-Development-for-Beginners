@@ -42,3 +42,4 @@ Empty template for Postman Environment for ArchivesSpace API:
 - [ArchivesSpace API Technical Documentation](https://archivesspace.github.io/archivesspace/api): Official docs for the ASpace API.
 - [Postman Learning Center](https://learning.postman.com/): More learning material on API testing and development on the Postman platform.
 - [Awesome ArchivesSpace](https://github.com/archivesspace/awesome-archivesspace): A wide-ranging list of web resources for ArchivesSpace users, including other scripts.
+- [JSON](https://www.w3schools.com/js/js_json_intro.asp), [JavaScript](https://www.w3schools.com/js/), [Python](https://www.w3schools.com/python/default.asp): Suggested programming languages/syntax to aid in reading/writing basic scripts.
