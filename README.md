@@ -9,7 +9,7 @@ You'll find a small set of simple utility JSON scripts to be used with [Postman]
 <br>
 
 ## Preparing for the workshop
-|[Download PDF 📂](#)|
+|[Download Participant Prep PDF 📂](#)|
 |---|
 
 <br>
@@ -29,10 +29,16 @@ Empty template for Postman Environment for ArchivesSpace API:
 <br>
 
 ## Handouts 
-- Cheatsheet
-- Slide deck from demonstration
+
+|[Download Cheatsheet PDF 📂](#)|
+|---|
+
+|[Download Slide Deck PDF 📂](#)|
+|---|
 
 <br>
 
 ## Additional resources 
-- A list
+- [ArchivesSpace API Technical Documentation](https://archivesspace.github.io/archivesspace/api): Official docs for the ASpace API.
+- [Postman Learning Center](https://learning.postman.com/): More learning material on API testing and development on the Postman platform.
+- [Awesome ArchivesSpace](https://github.com/archivesspace/awesome-archivesspace): A wide-ranging list of web resources for ArchivesSpace users.
