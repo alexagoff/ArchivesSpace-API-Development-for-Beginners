@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "63794be2-5619-4e12-a50e-18d76924bfad",
 		"name": "update_resource",
-		"description": "A demonstration collection which appends something to a repository processing note in an ArchivesSpace resource.\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.",
+		"description": "A demonstration collection which appends something to the repository processing note in an ArchivesSpace resource record. This collection does not overwrite the existing content of the note.\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
