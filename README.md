@@ -17,7 +17,7 @@ You'll find a small set of simple utility JSON scripts to be used with [Postman]
 
 ## List of scripts 
 Description of Postman Collection scripts in this repository:
-- [`create_aspace_session.json`](/Postman%20Collections/create_aspace_session.json): Summary
+- [`create_aspace_session.json`](/Postman%20Collections/create_aspace_session.json): Use to set a session with the ArchivesSpace API before using any other collections. Requires an environment variable for your institution's ArchivesSpace API (aspace_base_url) as well as user name (aspace_user) and password (aspace_password). Once a session is set, the ability to interact with ArchivesSpace records via the API will be based on permissions of the user account.
 - [`update_accessions.json`](/Postman%20Collections/update_accessions.json): Summary
 - [`update_agents.json`](/Postman%20Collections/update_agents.json): Summary
 - [`update_resources.json`](/Postman%20Collections/update_resources.json): Summary
