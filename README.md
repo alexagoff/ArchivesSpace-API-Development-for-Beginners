@@ -20,8 +20,8 @@ Description of Postman Collection scripts in this repository:
 - [`create_aspace_session.json`](/Postman%20Collections/create_aspace_session.json): Use to set a session with the ArchivesSpace API before using any other collections. Requires an environment variable for your institution's ArchivesSpace API (aspace_base_url) as well as user name (aspace_user) and password (aspace_password). Once a session is set, the ability to interact with ArchivesSpace records via the API will be based on permissions of the user account.
 - [`update_accessions.json`](/Postman%20Collections/update_accessions.json): Summary
 - [`update_agents.json`](/Postman%20Collections/update_agents.json): Summary
-- [`update_resources.json`](/Postman%20Collections/update_resources.json): Summary
-- [`update_resources_note_field.json`](/Postman%20Collections/update_resources_note_field.json): Summary
+- [`update_resources.json`](/Postman%20Collections/update_resources.json): Appends something to the repository processing note in an ArchivesSpace resource record.  This collection does not overwrite the existing content of the note.
+- [`update_resources_note_field.json`](/Postman%20Collections/update_resources_note_field.json): Updates the Conditions Governing Access note(s) in a resource record if a specific string is present. Out of the box it is set up to look for the string "Reproduction and Permissions Request Form", but the user can change that to whatever. The collection uses a for loop to look through all notes attached to a resource record and an if statement to test whether the note is an Conditions Governing Access note.
 - [`update_subjects.json`](/Postman%20Collections/update_subjects.json): Summary
 
 Empty template for Postman Environment for ArchivesSpace API: 
