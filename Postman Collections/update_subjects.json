@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "131aaa6f-b790-491a-8310-bffef39a37c0",
 		"name": "update_subject",
-		"description": "StartFragment\n\nA demonstration collection that updates or adds a scope note to a subject record. The uri for the subject record to be edited must be supplied.\n\nEndFragment",
+		"description": "A demonstration collection that updates or adds a scope note to a subject record. The uri for the subject record to be edited must be supplied.\n\nStartFragment\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.\n\nEndFragment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
