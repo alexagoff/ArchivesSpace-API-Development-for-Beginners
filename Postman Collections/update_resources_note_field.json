@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "4451584f-0da5-42dd-955d-5a87867607f3",
 		"name": "update_resource_note_field",
-		"description": "A demonstration collection which updates the access restriction note in a resource record if it contains a specific string.\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.",
+		"description": "A demonstration collection which updates the access restriction note in a resource record if it contains a specific string. Out of the box it is set up to look for \"Reproduction and Permissions Request Form\", but the user can change that to whatever. The collection uses a for loop to look through all notes attached to a resource record and an if statement to test whether the note is a Conditions Governing Access note.\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
