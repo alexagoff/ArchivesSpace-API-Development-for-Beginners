@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "131aaa6f-b790-491a-8310-bffef39a37c0",
 		"name": "update_subject",
+		"description": "StartFragment\n\nA demonstration collection that updates or adds a scope note to a subject record. The uri for the subject record to be edited must be supplied.\n\nEndFragment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
