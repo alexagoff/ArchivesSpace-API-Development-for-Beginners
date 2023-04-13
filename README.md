@@ -18,11 +18,11 @@ You'll find a small set of simple utility JSON scripts to be used with [Postman]
 ## List of scripts 
 Description of Postman Collection scripts in this repository:
 - [`create_aspace_session.json`](/Postman%20Collections/create_aspace_session.json): Use to set a session with the ArchivesSpace API before using any other collections. Requires an environment variable for your institution's ArchivesSpace API (aspace_base_url) as well as user name (aspace_user) and password (aspace_password). Once a session is set, the ability to interact with ArchivesSpace records via the API will be based on permissions of the user account.
-- [`update_accessions.json`](/Postman%20Collections/update_accessions.json): Summary
-- [`update_agents.json`](/Postman%20Collections/update_agents.json): Summary
+- [`update_accessions.json`](/Postman%20Collections/update_accessions.json): Appends something to the Content Description field in an Accession record. This collection does not overwrite the existing description field, new content is added to the end.
+- [`update_agents.json`](/Postman%20Collections/update_agents.json): Changes the Source dropdown field in an Agent record.  Note that  to change the source, you must provide the Value from the Name Source (name_source) controlled value list, not the translation value that displays in the Agent record (ex. "lcnaf" instead of "Library of Congress Name Authority File).
 - [`update_resources.json`](/Postman%20Collections/update_resources.json): Appends something to the repository processing note in an ArchivesSpace resource record.  This collection does not overwrite the existing content of the note.
 - [`update_resources_note_field.json`](/Postman%20Collections/update_resources_note_field.json): Updates the Conditions Governing Access note(s) in a resource record if a specific string is present. Out of the box it is set up to look for the string "Reproduction and Permissions Request Form", but the user can change that to whatever. The collection uses a for loop to look through all notes attached to a resource record and an if statement to test whether the note is a Conditions Governing Access note.
-- [`update_subjects.json`](/Postman%20Collections/update_subjects.json): Summary
+- [`update_subjects.json`](/Postman%20Collections/update_subjects.json): Updates or adds a scope note to a subject record.  The uri for the subject record to be edited must be supplied. 
 
 Empty template for Postman Environment for ArchivesSpace API: 
 [`Empty ASpace Environment.postman_environment.json`](Empty%20ASpace%20Environment.postman_environment.json)
