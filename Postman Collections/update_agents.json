@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "dfd8a8ce-9225-4a72-b72e-2832be678610",
 		"name": "update_agent",
+		"description": "A demonstration collection which appends something to the Content Description field in an Accession record. This collection does not overwrite the existing description field, new content is added to the end.\n\nYou must have an active ArchivesSpace session saved as an environment variable for this collection to work. Run create_aspace_session first to set this up.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
