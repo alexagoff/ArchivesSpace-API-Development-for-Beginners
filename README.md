@@ -31,7 +31,7 @@ Empty template for Postman Environment for ArchivesSpace API:
 
 ## Handouts 
 
-|[Download Cheatsheet PDF ⤵️](API Workshop - How to Prepare (Participants).pdf)|
+|[Download Cheatsheet PDF ⤵️](#)|
 |---|
 
 |[Download Slide Deck PDF ⤵️](#)|
