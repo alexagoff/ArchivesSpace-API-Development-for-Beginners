@@ -10,7 +10,7 @@ You'll find a small set of simple utility JSON scripts to be used with [Postman]
 <br>
 
 ## Preparing for the workshop
-|[Download Participant Prep PDF ⤵️](#)|
+|[Download Participant Prep PDF ⤵️](API%20Workshop%20-%20How%20to%20Prepare%20(Participants).pdf)|
 |---|
 
 <br>
@@ -31,7 +31,7 @@ Empty template for Postman Environment for ArchivesSpace API:
 
 ## Handouts 
 
-|[Download Cheatsheet PDF ⤵️](#)|
+|[Download Cheatsheet PDF ⤵️](API Workshop - How to Prepare (Participants).pdf)|
 |---|
 
 |[Download Slide Deck PDF ⤵️](#)|
