@@ -159,8 +159,16 @@
 							"//This logs the current repository processing note to the console so that you can see what it looked like before editing\r",
 							"    console.log(\"@@EXISTING NOTE TEXT: \" + repo_note)\r",
 							"\r",
-							"//This adds a space followed by the variable to be appended to the note.\r",
-							"    var new_rep = repo_note + \" \" + n\r",
+							"//This checks to see if the current repo note is empty.    \r",
+							"    //If the current repo note is empty, n becomes the only repo note.\r",
+							"    if (repo_note == undefined){\r",
+							"       var new_rep = n \r",
+							"    } \r",
+							"    //If the repo note is not empty, n is appended to the end, preceded by a space.\r",
+							"    else {\r",
+							"        //This adds a space followed by the variable to be appended to the note.\r",
+							"        var new_rep = repo_note + \" \" + n\r",
+							"    }\r",
 							"\r",
 							"//This logs the new note to the console so you can see what it will look like\r",
 							"    console.log(\"@@UPDATED NOTE TEXT: \" + new_rep)\r",
@@ -202,7 +210,7 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"description": "Archives Space session ID",
