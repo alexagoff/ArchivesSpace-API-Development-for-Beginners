@@ -30,13 +30,14 @@ Empty template for Postman Environment for ArchivesSpace API:
 <br>
 
 ## Handouts 
-
+Forthcoming
+<!--
 |[Download Cheatsheet PDF ⤵️](#)|
 |---|
 
 |[Download Slide Deck PDF ⤵️](#)|
 |---|
-
+-->
 <br>
 
 ## Additional resources 
