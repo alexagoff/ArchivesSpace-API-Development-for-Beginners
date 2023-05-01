@@ -10,7 +10,7 @@ You'll find a small set of simple utility JSON scripts to be used with [Postman]
 <br>
 
 ## Preparing for the workshop
-|[Download Participant Prep PDF ⤵️](API%20Workshop%20-%20How%20to%20Prepare%20(Participants).pdf)|
+|[Download Participant Prep Guide PDF ⤵️](API%20Workshop%20-%20How%20to%20Prepare%20(Participants).pdf)|
 |---|
 
 <br>
