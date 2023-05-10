@@ -34,10 +34,10 @@ Forthcoming
 <!--
 |[Download Cheatsheet PDF ⤵️](#)|
 |---|
-
-|[Download Slide Deck PDF ⤵️](#)|
-|---|
 -->
+|[Download Slide Deck PDF ⤵️](NWA%20API%20Workshop%20-%20Slides%20-%20May%202023.pdf)|
+|---|
+
 <br>
 
 ## Additional resources 
